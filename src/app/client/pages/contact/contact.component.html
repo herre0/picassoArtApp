@@ -1,0 +1,108 @@
+<section class="ftco-section ftco-no-pt ftco-no-pb">
+    <div class="container px-md-0">
+        <div class="row d-flex no-gutters mobil-pattern">           
+            <div class="col-lg-5 col-md-5 d-flex align-items-stretch">
+                <div class="info-wrap js-fullheight bg-primary w-100 p-md-5 p-4">
+                    <h3>Let's get in touch
+                    </h3>
+                    <p>We're open for any suggestion or just to have a chat</p>
+                    <div *ngIf="settings.adress != ''" class="dbox w-100 d-flex align-items-start">
+                        <div class="icon d-flex align-items-center justify-content-center">
+                            <span class="fa fa-map-marker"></span>
+                        </div>
+                        <div class="text pl-3">
+                            <p><span>Address:</span> {{settings?.adress}}</p>
+                        </div>
+                    </div>
+                    <div *ngIf="settings.phone != ''" class="dbox w-100 d-flex align-items-center">
+                        <div class="icon d-flex align-items-center justify-content-center">
+                            <span class="fa fa-phone"></span>
+                        </div>
+                        <div class="text pl-3">
+                            <p><span>Phone:</span> {{settings.phone}}</p>
+                        </div>
+                    </div>
+                    <div *ngIf="settings.email != ''" class="dbox w-100 d-flex align-items-center">
+                        <div class="icon d-flex align-items-center justify-content-center">
+                            <span class="fa fa-paper-plane"></span>
+                        </div>
+                        <div class="text pl-3">
+                            <p><span>Email:</span> {{settings.email}}</p>
+                        </div>
+                    </div>
+                    <div *ngIf="settings.facebook != ''" class="dbox w-100 d-flex align-items-center">
+                        <div class="icon d-flex align-items-center justify-content-center">
+                            <span class="fa fa-facebook"></span>
+                        </div>
+                        <div class="text pl-3">
+                            <p><span>Facebook:</span> {{settings.facebook}}</p>
+                        </div>
+                    </div>
+                    <div *ngIf="settings.instagram != ''" class="dbox w-100 d-flex align-items-center">
+                        <div class="icon d-flex align-items-center justify-content-center">
+                            <span class="fa fa-instagram"></span>
+                        </div>
+                        <div class="text pl-3">
+                            <p><span>Instagram:</span> {{settings.instagram}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-7 col-md-7  d-flex align-items-stretch">
+                <div class="contact-wrap w-100 p-md-5 p-4">
+                    <h3 class="mb-4 heading">GET IN TOUCH</h3>
+                    <form method="POST" id="contactForm" name="contactForm" class="contactForm">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="label" for="name">Full Name</label>
+                                    <input type="text" class="form-control" name="name" id="name" placeholder="Name">
+                                </div>
+                            </div>
+                            <div class="col-md-6"> 
+                                <div class="form-group">
+                                    <label class="label" for="email">Email Address</label>
+                                    <input type="email" class="form-control" name="email" id="email" placeholder="Email">
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="label" for="subject">Subject</label>
+                                    <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject">
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="label" for="#">Message</label>
+                                    <textarea style="width: 100%;" name="message" class="form-control" id="message" cols="30" rows="4" placeholder="Message"></textarea>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <input (click)="putAlert()" type="submit" value="Send Message" class="btn btn-primary">
+                                    <div class="submitting"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+     
+    </div>
+</section>
+
+
+<style>
+    .icon {
+        padding-top: 12px;
+    }
+    @media only screen and (max-width: 766px) {
+      .mobil-pattern {        
+        margin-top: 50px;
+      }
+      
+    }
+</style>
+

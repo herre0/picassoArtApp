@@ -1,0 +1,69 @@
+<section class="ftco-section ftco-no-pt ftco-no-pb">
+    <div class="container px-md-0">
+        <div class="row d-flex no-gutters" style="justify-content: center;">
+            <span *ngIf="!isAdmin">{{content}}</span>
+            <h3 *ngIf="isAdmin">Yeni Kategori Ekle </h3>
+        </div>
+
+        <div *ngIf="isAdmin" class="row d-flex no-gutters" style="justify-content: center;">
+
+            <div class="card card-container" style="padding:20px;">
+                <form name="form" (ngSubmit)="onSubmit()" >
+                    <div class="form-group">
+                        <label for="kategoriadi">Kategori Adı<span style="color: red;">*</span></label>
+                        <input type="text" class="form-control" name="kategoriadi" [(ngModel)]="category.name"/>                        
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-primary btn-block">
+                            ADD
+                        </button>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="alert alert-danger" role="alert" *ngIf="isFailed">
+                            hata : {{ errorMessage }}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="alert alert-success" role="alert" *ngIf="isSuccess">
+                            {{ message }}
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div *ngIf="isAdmin" class="row d-flex no-gutters" style="justify-content: center; margin-top: 30px;">
+
+            <div class="table-responsive" style="width: 70% !important;">
+                <table class="table table-dark">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Category</th>                            
+                            <th scope="col">Action</th>                            
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of categories; let i = index">
+                            <td>{{i+1}}</td>                            
+                            <td>{{item.name}}</td>                            
+                            <td>
+                                <button (click)="deleteItem(item.id)" class="btn btn-danger">Delete</button>
+                            </td>
+                        </tr>                  
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+
+
+    </div>
+</section>
+<style>
+    .img-herre {
+        max-width:100px;
+        max-height:50px;
+    }
+</style>

@@ -1,0 +1,42 @@
+<section class="ftco-section ftco-no-pt ftco-no-pb">
+    <div class="container px-md-0">
+        <div class="row d-flex no-gutters mobil-pattern">
+            
+            <div *ngFor="let item of paintings; let i = index" class="col-md-12 portfolio-wrap">
+                <div class="row no-gutters align-items-center">
+                    <img  [routerLink]="['/detail/'+item.id]" height="261" width="400" class="col-md-6 img d-flex align-items-center justify-content-center" style="background-image: url({{item.imageUrl}}); width: 100%; height: auto; max-height: 261px;"
+                    [ngClass]="{'order-md-last':i % 2 == 1}">
+                    <div class="col-md-6">
+                        <div class="text pt-5 pl-0 px-lg-5 pl-md-4">
+                            <div class="px-4 px-lg-4">
+                                <div class="desc">
+                                    <div class="top">
+                                        <span class="subheading">{{item.category}}</span>
+                                        <h2 class="mb-4"><a [routerLink]="['/detail/'+item.id]">{{item.name}}</a></h2>
+                                    </div>
+                                    <div class="absolute">
+                                        <p>{{item.description}}</p>
+                                    </div>
+                                    <p><a [routerLink]="['/detail/'+item.id]" class="custom-btn">View Details</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+        </div>
+     
+    </div>
+</section>
+
+<style>
+    @media only screen and (max-width: 766px) {
+      .mobil-pattern {        
+        margin-top: 50px;
+      }
+      
+    }
+  </style>

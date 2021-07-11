@@ -1,0 +1,50 @@
+<a (click)="openSideBar()" class="js-colorlib-nav-toggle colorlib-nav-toggle"
+	><i></i></a>
+	<a (click)="openSideBar()" class="js-colorlib-nav-toggle colorlib-nav-toggle"
+	><i></i></a>
+
+<aside [ngClass]="[isOpen ? 'showUp' : 'closeUp']" id="colorlib-aside" role="complementary" class="js-fullheight">
+
+	<h1 id="colorlib-logo" class="mb-4 mb-md-5"><a href="index.html"
+			style="background-image: url(./assets/images/bg_1.jpg);">{{settings.logoName}}</a></h1>
+	<nav id="colorlib-main-menu" role="navigation">
+		<ul>
+
+			<div *ngFor="let menu of menus">
+				<li *ngIf="showAdmin(menu.isAdmin)" (click)="changeActive(menu.name)"
+					[ngClass]="{'colorlib-active': menu.isActive}">
+					<a [routerLink]="[menu.href]" [style.color]="menu.color">{{menu.name}}</a>
+				</li>
+			</div>
+
+		</ul>
+	</nav>
+
+	<div class="colorlib-footer" *ngIf="isLoggedIn">
+		<div class="mb-4">
+			<h3>{{name}} &nbsp;&nbsp;&nbsp;
+				<span style="cursor: pointer;" (click)="signOut()">Log Out</span>
+			</h3>
+		</div>
+	</div>
+	<div class="colorlib-footer" *ngIf="!isLoggedIn">
+		<div class="mb-4">
+			<h3 [routerLink]="['/login']" style="cursor: pointer;">Login</h3>
+		</div>
+	</div>
+</aside> <!-- END COLORLIB-ASIDE -->
+
+
+<style>
+	@media only screen and (max-width: 991px) {
+	.visible-menu-button {
+		display: none;
+	}
+	.showUp {
+		transform: translateX(0px) !important;
+	}
+	.closeUp {
+		transform: translateX(-270px) !important;
+	}
+}
+</style>

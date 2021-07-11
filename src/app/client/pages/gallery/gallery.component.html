@@ -1,0 +1,35 @@
+<section class="ftco-section ftco-no-pt ftco-no-pb">
+    <div class="container px-md-0">
+        <div class="row d-flex no-gutters mobil-pattern2">
+
+
+            <div *ngFor="let item of paintings" class="col-md-4 portfolio-wrap-2 mobil-pattern">
+                <div class="row no-gutters align-items-center">
+                    <div [routerLink]="['/detail/'+item.id]" class="img w-100 d-flex align-items-center" style="background-image: url({{item.imageUrl}}); max-height: 252px;">
+                        <div class="text p-4 p-md-5">
+                            <div class="desc">
+                                <div class="top">
+                                    <span class="subheading">{{item.category}}</span>
+                                    <h2 class="mb-4"><a [routerLink]="['/detail/'+item.id]">{{item.name}}</a></h2>
+                                    <p><a [routerLink]="['/detail/'+item.id]" class="custom-btn">View Details</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>    
+        </div>
+       
+    </div>
+</section>
+
+<style>
+    @media only screen and (max-width: 766px) {
+      .mobil-pattern {        
+        margin-bottom: 12px;
+      }
+      .mobil-pattern2 {
+        margin-top: 50px;
+      }
+    }
+</style>

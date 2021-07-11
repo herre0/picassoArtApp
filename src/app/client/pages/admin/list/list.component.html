@@ -1,0 +1,68 @@
+<section class="ftco-section ftco-no-pt ftco-no-pb">
+    <div class="container px-md-0">
+        <div class="row d-flex no-gutters" style="justify-content: center;">
+
+
+            <span *ngIf="!isAdmin">{{content}}</span>
+
+           
+
+        </div>
+        <div *ngIf="isAdmin" class="row d-flex no-gutters" style="justify-content: center;">
+            <h3>Resimler Listesi</h3>
+            <div class="table-responsive" style="width: 98%;">
+            <table class="table table-dark">
+                <thead>
+                    <tr>
+                        <th scope="col">Resim Adı</th>
+                        <th scope="col">Açıklaması</th>
+                        <th scope="col">Resim</th>
+                        <th scope="col">Kategori</th>
+                        <th scope="col">Öncelik</th>
+                        <th scope="col">Fiyat</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of paintings">
+                        <td>{{item.name}}</td>
+                        <td scope="row" class="shorter-text">{{item.description}}</td>
+                        <td><img class="img-herre" src="{{item.imageUrl}}"></td>
+                        <td>{{item.category}}</td>
+                        <td>{{item.order}}</td>
+                        <td>{{item.price}}</td>
+                        <td>
+                            <button routerLink="/edit/{{item.id}}" class="btn btn-info">Edit</button>
+                            <button (click)="deleteItem(item.id)" class="btn btn-danger">Delete</button>
+                        </td>
+                    </tr>                  
+                </tbody>
+            </table>
+        </div>
+        <div class="form-group">
+            <div class="alert alert-success" role="alert" *ngIf="isSuccess">
+                {{ message }}
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="alert alert-danger" role="alert" *ngIf="isError">
+                hata : {{ errorMessage }}
+            </div>
+        </div>
+        </div>
+
+       
+    </div>
+</section>
+
+<style>
+    .img-herre {
+        max-width:50px;
+        max-height:50px;
+    }
+    .shorter-text {
+        max-width: 70px !important;
+        max-height: 1.1em !important; 
+        overflow:hidden !important;
+    }
+</style>

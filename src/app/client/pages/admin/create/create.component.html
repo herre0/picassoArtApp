@@ -1,0 +1,84 @@
+<section class="ftco-section ftco-no-pt ftco-no-pb">
+    <div class="container px-md-0">
+        <div class="row d-flex no-gutters" style="justify-content: center;">
+            <span *ngIf="!isAdmin">{{content}}</span>
+            <h3 *ngIf="isAdmin">Yeni Resim Ekle </h3>
+        </div>
+
+        <div *ngIf="isAdmin" class="row d-flex no-gutters" style="justify-content: center;">
+
+            <div class="card card-container" style="padding:20px;">
+                <form name="form" (ngSubmit)="onSubmit()" >
+                    <div class="form-group">
+                        <label for="tabloadi">Resim Adı<span style="color: red;">*</span></label>
+                        <input type="text" class="form-control" name="tabloadi" [(ngModel)]="painting.name"/>                        
+                    </div>
+
+                    <div class="form-group">
+                        <label for="aciklama">Açıklaması<span style="color: red;">*</span></label>
+                        <textarea type="text" class="form-control" name="aciklama" [(ngModel)]="painting.description"></textarea>
+                       
+                    </div>
+
+                    <div class="form-group">
+                        <label for="resimurl">Resim URL<span style="color: red;">*</span></label>
+                        <input (change)="changeImage()" type="text" class="form-control" name="resimurl" [(ngModel)]="painting.imageUrl" />
+                      
+                    </div>
+                    <div *ngIf="isImageShowed" class="form-group">
+                        <img class="img-herre" src="{{painting.imageUrl}}" alt="ewew">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="kategori">Kategori<span style="color: red;">*</span></label>
+                        <select name="kategori" id="kategori" class="form-control" [(ngModel)]="painting.category">
+                            <option *ngFor="let item of categories" value="{{item.name}}">{{item.name}}</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="order">Öncelik Sırası<span style="color: red;">*</span></label>
+                        <select name="order" id="order" class="form-control" [(ngModel)]="painting.order">
+                            <option value="1">1- Çok Önemli</option>
+                            <option value="2">2- Önemli</option>
+                            <option value="3">3- Önemsiz</option>                        
+                        </select>
+                       
+                    </div>
+
+                    <div class="form-group">
+                        <label for="fiyat">Fiyat</label>
+                        <input type="text" class="form-control" name="fiyat" [(ngModel)]="painting.price" />
+                    </div>
+
+                    <div class="form-group">
+                        <button class="btn btn-primary btn-block">
+                            CREATE
+                        </button>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="alert alert-danger" role="alert" *ngIf="isFailed">
+                            hata : {{ errorMessage }}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="alert alert-success" role="alert" *ngIf="isSuccess">
+                            {{ message }}
+                        </div>
+                    </div>
+                </form>
+
+
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<style>
+    .img-herre {
+        max-width:100px;
+        max-height:50px;
+    }
+</style>

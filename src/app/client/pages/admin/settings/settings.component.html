@@ -1,0 +1,105 @@
+<section class="ftco-section ftco-no-pt ftco-no-pb">
+    <div class="container px-md-0">
+        <div class="row d-flex no-gutters" style="justify-content: center;">
+            <span *ngIf="!isAdmin">{{content}}</span>
+            <h3 *ngIf="isAdmin">Genel Ayarlar </h3>
+        </div>
+
+        <div *ngIf="isAdmin" class="row d-flex no-gutters" style="justify-content: center;">
+
+            <div class="card card-container" style="padding: 20px;">
+                <form name="form" (ngSubmit)="onSubmit()" >
+                    <h6 class="text-center">About</h6><hr>
+                    <div class="form-group">
+                        <label for="head">Başlık<span style="color: red;">*</span></label>
+                        <input type="text" class="form-control" name="head" [(ngModel)]="settings.headerText"/>                        
+                    </div>
+
+                    <div class="form-group">
+                        <label for="aciklama">Açıklama<span style="color: red;">*</span></label>
+                        <textarea  type="text" class="form-control" name="aciklama" [(ngModel)]="settings.aboutText">
+                        </textarea>
+                       
+                    </div>
+
+                    <div class="form-group">
+                        <label for="photo">Resim URL<span style="color: red;">*</span></label>
+                        <input (change)="changeImage()" type="text" class="form-control" name="photo" [(ngModel)]="settings.photo" />
+                      
+                    </div>
+                    <div *ngIf="isImageShowed" class="form-group">
+                        <img class="img-herre" src="{{settings.photo}}" alt="ewew">
+                    </div>      
+
+                    <h6 class="text-center">Contact</h6><hr>
+                    <div class="form-group">
+                        <label for="contact">Email</label>
+                        <input type="text" class="form-control" name="contact"  [(ngModel)]="settings.email"/>                        
+                    </div>
+                    <div class="form-group">
+                        <label for="instagram">Instagram</label>
+                        <input type="text" class="form-control" name="instagram" [(ngModel)]="settings.instagram"/>                        
+                    </div>
+                    <div class="form-group">
+                        <label for="facebook">Facebook</label>
+                        <input type="text" class="form-control" name="facebook" [(ngModel)]="settings.facebook"/>                        
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone</label>
+                        <input type="text" class="form-control" name="phone" [(ngModel)]="settings.phone"/>                        
+                    </div>
+                    <div class="form-group">
+                        <label for="adress">Adress</label>
+                        <input type="text" class="form-control" name="adress" [(ngModel)]="settings.adress"/>                        
+                    </div>
+                    
+                    <h6 class="text-center">Site Settings</h6><hr>
+                    <div class="form-group">
+                        <label for="logoName">Logo Name<span style="color: red;">*</span></label>
+                        <input type="text" class="form-control" name="logoName" [(ngModel)]="settings.logoName"/>                        
+                    </div>
+                    <div class="form-group">
+                        <label for="siteTitle">Site Title<span style="color: red;">*</span></label>
+                        <input type="text" class="form-control" name="siteTitle" [(ngModel)]="settings.siteTitle"/>                        
+                    </div>
+                   <div class="form-group">
+                        <label for="titleLogo">Title Logo<span style="color: red;">*</span></label>
+                        <input (change)='changeImg()' type="text" class="form-control" name="titleLogo" [(ngModel)]="settings.titleLogo"/>                        
+                    </div> 
+                    <div *ngIf="isImageShowed2" class="form-group">
+                        <img class="img-herre" src="{{settings.titleLogo}}" alt="ewew">
+                    </div>  
+                    
+
+                    <div class="form-group">
+                        <button class="btn btn-primary btn-block">
+                            SAVE
+                        </button>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="alert alert-danger" role="alert" *ngIf="isFailed">
+                            hata : {{ errorMessage }}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="alert alert-success" role="alert" *ngIf="isSuccess">
+                            {{ message }}
+                        </div>
+                    </div>
+                </form>
+
+
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<style>
+    .img-herre {
+        max-width:100px;
+        max-height:50px;
+    }
+</style>

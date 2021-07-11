@@ -1,0 +1,16 @@
+<section class="ftco-about img ftco-section ftco-no-pt ftco-no-pb" id="about-section">
+    <div class="container-fluid px-0">
+        <div class="row d-flex">
+            <div class="col-md-6 d-flex">
+                <img class="img d-flex align-self-stretch align-items-center" height="700" width="400" style="background-image:url({{settings.photo}}); width: 100%; height: auto; max-height: 700px;">
+            </div>
+            <div class="col-md-6 d-flex align-items-center">
+                <div class="text px-4 pt-5 pt-md-0 px-md-4 pr-md-5">
+                    <h2 class="mb-4" [innerHTML]="settings?.headerText"></h2>
+                    <p>{{settings?.aboutText}}</p>
+                   
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
